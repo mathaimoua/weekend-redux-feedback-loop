@@ -4,5 +4,26 @@ import './index.css';
 import App from './components/App/App';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import logger from 'redux-logger';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+
+const reducer = (state = {feeling: '', understanding: ''}, action) => {
+  if (action.type === 'SAVE_FEELING') {
+    return {...state, feeling: action.payload.feeling};
+  }
+  if (action.type === 'SAVE_UNDERSTANDING') {
+    return {...state, understanding: action.payload.understanding};
+  }
+  return state;
+}
+
+const storeInstance = createStore(
+  combineReducers({
+    reducer
+  }),
+  applyMiddleware(logger),
+);
+
+ReactDOM.render(<Provider store={storeInstance}><App /></Provider>, document.getElementById('root'));
 registerServiceWorker();
