@@ -1,40 +1,40 @@
-import "./Understanding.css";
+import "./Support.css";
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 
-function Understanding() {
+function Support() {
   const dispatch = useDispatch();
 
   const history = useHistory();
-  const [understanding, setUnderstanding] = useState("");
+  const [support, setSupport] = useState("");
 
   const handleNext = () => {
-    if (understanding !== "") {
+    if (support !== "") {
       dispatch({
-        type: "SAVE_UNDERSTANDING",
-        payload: { understanding: understanding },
+        type: "SAVE_SUPPORT",
+        payload: { support: support },
       });
-      history.push('/support');
+      history.push('/comments');
     } else {
       alert("Please input a rating 1-5");
     }
   };
 
-  const handleUnderstanding = (event) => {
-    setUnderstanding(event.target.value);
+  const handleSupport = (event) => {
+    setSupport(event.target.value);
   };
 
   return (
     <div>
-      <h1>How well u understanding this shiz?</h1>
+      <h1>How well Dane be supportin' yo azz?</h1>
       <form onSubmit={handleNext}>
         <input
           type="number"
           max="5"
           min="1"
-          onChange={handleUnderstanding}
-          value={understanding}
+          onChange={handleSupport}
+          value={support}
         />
         <button>Next</button>
       </form>
@@ -42,4 +42,4 @@ function Understanding() {
   );
 }
 
-export default Understanding;
+export default Support;
