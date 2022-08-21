@@ -3,6 +3,8 @@ import { useHistory } from "react-router-dom";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
+import { Button } from "@material-ui/core";
+import { TextField } from "@material-ui/core";
 
 function Support() {
   const dispatch = useDispatch();
@@ -18,7 +20,7 @@ function Support() {
         type: "SAVE_SUPPORT",
         payload: { support: support },
       });
-      history.push('/comments');
+      history.push("/comments");
     } else {
       alert("Please input a rating 1-5");
     }
@@ -32,7 +34,7 @@ function Support() {
     <div>
       <h1>How well are you being supported?</h1>
       <form onSubmit={handleNext}>
-        <input
+        <TextField
           type="number"
           max="5"
           min="1"
@@ -40,7 +42,9 @@ function Support() {
           onChange={handleSupport}
           value={support}
         />
-        <button>Next</button>
+        <Button variant="contained" color="primary" type="submit">
+          Next
+        </Button>
       </form>
     </div>
   );

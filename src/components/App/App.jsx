@@ -1,6 +1,5 @@
 import React from "react";
-import axios from "axios";
-import { HashRouter as Router, Route} from "react-router-dom";
+import { HashRouter as Router, Route } from "react-router-dom";
 import Header from "../Header/Header";
 import Feeling from "../Feeling/Feeling";
 import Understanding from "../Understanding/Understanding";
@@ -10,31 +9,46 @@ import Review from "../Review/Review";
 import End from "../End/End";
 import "./App.css";
 
+import { createTheme, ThemeProvider } from "@material-ui/core/styles";
+
 function App() {
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: "#0b8e81",
+      },
+      secondary: {
+        main: "#0b8e81",
+      },
+    },
+  });
+
   return (
-    <Router>
-      <div className="App">
-        <Header />
-        <Route path="/" exact>
-          <Feeling />
-        </Route>
-        <Route path="/understanding" exact>
-          <Understanding />
-        </Route>
-        <Route path="/support" exact>
-          <Support />
-        </Route>
-        <Route path="/comments" exact>
-          <Comments />
-        </Route>
-        <Route path="/review" exact>
-          <Review />
-        </Route>
-        <Route path="/end" exact>
-          <End />
-        </Route>
-      </div>
-    </Router>
+    <ThemeProvider theme={theme}>
+      <Router>
+        <div className="App">
+          <Header />
+          <Route path="/" exact>
+            <Feeling />
+          </Route>
+          <Route path="/understanding" exact>
+            <Understanding />
+          </Route>
+          <Route path="/support" exact>
+            <Support />
+          </Route>
+          <Route path="/comments" exact>
+            <Comments />
+          </Route>
+          <Route path="/review" exact>
+            <Review />
+          </Route>
+          <Route path="/end" exact>
+            <End />
+          </Route>
+        </div>
+      </Router>
+    </ThemeProvider>
   );
 }
 

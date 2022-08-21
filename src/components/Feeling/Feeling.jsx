@@ -3,6 +3,8 @@ import { useHistory } from "react-router-dom";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
+import { Button } from "@material-ui/core";
+import {TextField} from "@material-ui/core";
 
 function Feeling() {
   const dispatch = useDispatch();
@@ -18,7 +20,7 @@ function Feeling() {
         type: "SAVE_FEELING",
         payload: { feeling: feeling },
       });
-      history.push('/understanding');
+      history.push("/understanding");
     } else {
       alert("Please input a rating 1-5");
     }
@@ -32,7 +34,7 @@ function Feeling() {
     <div>
       <h1>How are you feeling today?</h1>
       <form onSubmit={handleNext}>
-        <input
+        <TextField
           type="number"
           max="5"
           min="1"
@@ -40,7 +42,9 @@ function Feeling() {
           onChange={handleFeeling}
           value={feeling}
         />
-        <button>Next</button>
+        <Button variant="contained" color="primary" type="submit" >
+          Next
+        </Button>
       </form>
     </div>
   );

@@ -3,6 +3,8 @@ import { useHistory } from "react-router-dom";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
+import { Button } from "@material-ui/core";
+import { TextField } from "@material-ui/core";
 
 function Understanding() {
   const dispatch = useDispatch();
@@ -13,12 +15,12 @@ function Understanding() {
 
   const handleNext = () => {
     event.preventDefault();
-    if (understanding !== '') {
+    if (understanding !== "") {
       dispatch({
         type: "SAVE_UNDERSTANDING",
         payload: { understanding: understanding },
       });
-      history.push('/support');
+      history.push("/support");
     } else {
       alert("Please input a rating 1-5");
     }
@@ -32,7 +34,7 @@ function Understanding() {
     <div>
       <h1>How well are you understanding the content?</h1>
       <form onSubmit={handleNext}>
-        <input
+        <TextField
           type="number"
           max="5"
           min="1"
@@ -40,7 +42,9 @@ function Understanding() {
           onChange={handleUnderstanding}
           value={understanding}
         />
-        <button>Next</button>
+        <Button variant="contained" color="primary" type="submit">
+          Next
+        </Button>
       </form>
     </div>
   );
