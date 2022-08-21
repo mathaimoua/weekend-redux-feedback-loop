@@ -3,6 +3,8 @@ import { useHistory } from "react-router-dom";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
+import TextField from "@material-ui/core/TextField";
+import { Button } from "@material-ui/core";
 
 function Comments() {
   const dispatch = useDispatch();
@@ -17,7 +19,7 @@ function Comments() {
       type: "SAVE_COMMENTS",
       payload: { comments: comments },
     });
-    history.push('/review');
+    history.push("/review");
   };
 
   const handleComments = (event) => {
@@ -28,14 +30,26 @@ function Comments() {
     <div>
       <h1>Any comments you want to leave?</h1>
       <form onSubmit={handleNext}>
-        <textarea
+        {/* <textarea
           className="commentInput"
           type="text"
           onChange={handleComments}
-          maxLength='175'
+          maxLength="175"
+          value={comments}
+        /> */}
+        <TextField
+          id="outlined-multiline-static"
+          label="Comments"
+          multiline
+          minRows={4}
+          variant="outlined"
+          className="commentInput"
+          onChange={handleComments}
           value={comments}
         />
-        <button>Next</button>
+        <Button variant="contained" color="primary" type="submit">
+          Next
+        </Button>
       </form>
     </div>
   );
