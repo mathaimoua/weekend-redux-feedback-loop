@@ -2,14 +2,17 @@ import "./Support.css";
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 function Support() {
   const dispatch = useDispatch();
 
+  const data = useSelector((store) => store.reducer);
   const history = useHistory();
-  const [support, setSupport] = useState("");
+  const [support, setSupport] = useState(data.support);
 
   const handleNext = () => {
+    event.preventDefault();
     if (support !== "") {
       dispatch({
         type: "SAVE_SUPPORT",
@@ -27,12 +30,13 @@ function Support() {
 
   return (
     <div>
-      <h1>How well Dane be supportin' yo azz?</h1>
+      <h1>How well are you being supported?</h1>
       <form onSubmit={handleNext}>
         <input
           type="number"
           max="5"
           min="1"
+          placeholder="1 - 5"
           onChange={handleSupport}
           value={support}
         />

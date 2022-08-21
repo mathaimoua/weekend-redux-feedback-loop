@@ -2,15 +2,18 @@ import "./Understanding.css";
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 function Understanding() {
   const dispatch = useDispatch();
 
+  const data = useSelector((store) => store.reducer);
   const history = useHistory();
-  const [understanding, setUnderstanding] = useState("");
+  const [understanding, setUnderstanding] = useState(data.understanding);
 
   const handleNext = () => {
-    if (understanding !== "") {
+    event.preventDefault();
+    if (understanding !== '') {
       dispatch({
         type: "SAVE_UNDERSTANDING",
         payload: { understanding: understanding },
@@ -27,12 +30,13 @@ function Understanding() {
 
   return (
     <div>
-      <h1>How well u understanding this shiz?</h1>
+      <h1>How well are you understanding the content?</h1>
       <form onSubmit={handleNext}>
         <input
           type="number"
           max="5"
           min="1"
+          placeholder="1 - 5"
           onChange={handleUnderstanding}
           value={understanding}
         />

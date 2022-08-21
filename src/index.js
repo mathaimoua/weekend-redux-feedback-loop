@@ -8,6 +8,7 @@ import logger from 'redux-logger';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 
+// The reducer will be used to store all survey answers from a single session, all keys are required except comments. On reset, return an object with emptied values.
 const reducer = (state = {feeling: '', understanding: '', support: '', comments: ''}, action) => {
   if (action.type === 'SAVE_FEELING') {
     return {...state, feeling: action.payload.feeling};
@@ -20,6 +21,9 @@ const reducer = (state = {feeling: '', understanding: '', support: '', comments:
   }
   if (action.type === 'SAVE_COMMENTS') {
     return {...state, comments: action.payload.comments};
+  }
+  if (action.type === 'RESET_ALL') {
+    return {feeling: '', understanding: '', support: '', comments: ''};
   }
   return state;
 }

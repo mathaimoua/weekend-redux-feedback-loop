@@ -1,7 +1,7 @@
 .App-header {
-  background-color: #033076;
+  background-color: #0b8e81;
   min-height: 70px;
+  max-height: 120px;
   padding: 20px;
   color: white;
-  margin-bottom: 20px;
 }
