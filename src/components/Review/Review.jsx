@@ -37,22 +37,22 @@ function Review() {
       <h1>Review Your Feedback</h1>
       <h4>
         Feeling: {data.feeling}{" "}
-        <button className="editButton" onClick={() => handleClick("/")}>Edit</button>
+        <Button variant="contained" color="primary" type="submit" className="editButton" onClick={() => handleClick("/")}>Edit</Button>
       </h4>
       <h4>
         Understanding: {data.understanding}{" "}
-        <button className="editButton" onClick={() => handleClick("/understanding")}>Edit</button>
+        <Button variant="contained" color="primary" type="submit" className="editButton" onClick={() => handleClick("/understanding")}>Edit</Button>
       </h4>
       <h4>
         Support {data.support}{" "}
-        <button className="editButton" onClick={() => handleClick("/support")}>Edit</button>
+        <Button variant="contained" color="primary" type="submit" className="editButton" onClick={() => handleClick("/support")}>Edit</Button>
       </h4>
       <h4>
         Comments: {data.comments}{" "}
-        <button className="editButton" onClick={() => handleClick("/comments")}>Edit</button>
+        <Button variant="contained" color="primary" type="submit" className="editButton" onClick={() => handleClick("/comments")}>Edit</Button>
       </h4>
       <br></br>
-      <button onClick={handleSubmit}>Submit</button>
+      <Button variant="contained" color="primary" type="submit" onClick={handleSubmit}>Submit</Button>
     </div>
   );
 }

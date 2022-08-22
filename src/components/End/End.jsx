@@ -1,5 +1,6 @@
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { Button } from "@material-ui/core";
 
 function End() {
   const history = useHistory();
@@ -16,7 +17,7 @@ function End() {
     <div>
       <h1>Thank you for your submission!</h1>
       <br></br>
-      <button onClick={handleReset}>Submit Another!</button>
+      <Button variant="contained" color="primary" type="submit" onClick={handleReset}>Submit Another!</Button>
     </div>
   );
 }

@@ -30,13 +30,6 @@ function Comments() {
     <div>
       <h1>Any comments you want to leave?</h1>
       <form onSubmit={handleNext}>
-        {/* <textarea
-          className="commentInput"
-          type="text"
-          onChange={handleComments}
-          maxLength="175"
-          value={comments}
-        /> */}
         <TextField
           id="outlined-multiline-static"
           label="Comments"
